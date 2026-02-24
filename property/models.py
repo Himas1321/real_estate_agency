@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
+
 class Flat(models.Model):
     owner = models.CharField('ФИО владельца', max_length=200)
     owners_phonenumber = models.CharField('Номер владельца', max_length=20)
@@ -52,6 +53,12 @@ class Flat(models.Model):
         null=True,
         blank=True,
         db_index=True)
+
+    likes = models.ManyToManyField(
+        User,
+        verbose_name='Лайкнули',
+        blank=True
+    )
 
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
