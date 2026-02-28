@@ -55,6 +55,7 @@ class Flat(models.Model):
     likes = models.ManyToManyField(
         User,
         verbose_name='Лайкнули',
+        related_name='liked_flats',
         blank=True
     )
 
@@ -66,12 +67,14 @@ class Complaint(models.Model):
         User,
         on_delete=models.CASCADE,
         verbose_name='Кто жаловался',
+        related_name='complaints',
         null=True,
         blank=True)
     flat = models.ForeignKey(
         Flat,
         on_delete=models.CASCADE,
         verbose_name='Квартира, на которую пожаловались',
+        related_name='complaints',
         null=True,
         blank=True)
     text = models.TextField(
