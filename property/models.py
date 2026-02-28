@@ -63,11 +63,11 @@ class Flat(models.Model):
         return f'{self.town}, {self.address} ({self.price}р.)'
 
 class Complaint(models.Model):
-    user = models.ForeignKey(
+    author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         verbose_name='Кто жаловался',
-        related_name='complaints',
+        related_name='complaints_authored',
         null=True,
         blank=True)
     flat = models.ForeignKey(
