@@ -6,7 +6,7 @@ def fill_owner_model(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
 
-    for flat in Flat.objects.all():
+    for flat in Flat.objects.all().iterator():
 
         if not flat.owner:
             continue
